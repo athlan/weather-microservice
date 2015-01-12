@@ -12,6 +12,7 @@ Author: Piotr Pelczar
 ## Requirements:
 
 * Python 2.7
+* virtualenv
 
 ## Installation:
 
