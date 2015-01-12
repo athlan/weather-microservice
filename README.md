@@ -21,6 +21,9 @@ $ virtualenv env
 $ source env/bin/activate
 ```
 * Install dependencies
+```
+pip install -r requirements.txt
+```
 * You are ready!
 
 To deactivate virtualenv just type:
