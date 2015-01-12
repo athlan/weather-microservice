@@ -3,12 +3,17 @@ import sys, getopt
 from flask import Flask
 from flask.ext import restful
 
+from springpython.context import ApplicationContext
+from springpython.config import YamlConfig
+
 from config import routing
 
 app = Flask(__name__)
 api = restful.Api(app)
 
-routing.registerRoutes(api)
+container = ApplicationContext(YamlConfig("./config/app-context.yml"))
+
+routing.registerRoutes(api, container)
 
 def main(argv):
     try:

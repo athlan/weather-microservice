@@ -1,4 +1,7 @@
 from ModuleWeatherBundle.Controller.WeatherController import WeatherController
 
-def registerRoutes(api):
-    api.add_resource(WeatherController, '/api/v1.0/')
+def registerRoutes(api, container):
+    
+    controller = WeatherController
+    controller.container = container
+    api.add_resource(controller, '/api/v1.0/')

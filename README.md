@@ -37,3 +37,7 @@ $ deactivate
 ```
 python app.py
 ```
+
+## References
+
+* http://docs.spring.io/spring-python/1.2.x/sphinx/html/objects-yamlconfig.html

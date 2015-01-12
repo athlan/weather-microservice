@@ -1,0 +1,7 @@
+objects:
+    - object: WeatherResource
+      class: ModuleWeatherBundle.Resource.WeatherResourceImpl.Wunderground.Wunderground
+      scope: singleton
+      lazy-init: True
+      constructor-args:
+          - "test value"
