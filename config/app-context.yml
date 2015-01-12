@@ -34,6 +34,5 @@ objects:
       scope: singleton
       lazy-init: True
       constructor-args:
-          - "localhost"
-          - 6379
+          - { host: "localhost", port: 6379 }
     
