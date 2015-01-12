@@ -1,7 +1,39 @@
 objects:
+    - object: AppParams
+      class: ModulesParametersBundle.Loader.Yaml
+      scope: singleton
+      lazy-init: True
+      constructor-args:
+          - "./config/parameters.yml"
+    
     - object: WeatherResource
+      class: ModuleWeatherBundle.Resource.WeatherResourceImpl.Cached.Cached
+      scope: singleton
+      lazy-init: True
+      constructor-args:
+          - { ref: WeatherResourceApiLimitGuard }
+          - { ref: RedisConnection1 }
+    
+    - object: WeatherResourceApiLimitGuard
+      class: ModuleWeatherBundle.Resource.WeatherResourceImpl.WundergroundApiLimitGuard.WundergroundApiLimitGuard
+      scope: singleton
+      lazy-init: True
+      constructor-args:
+          - { ref: WeatherResourceDirect }
+          - { ref: RedisConnection1 }
+    
+    - object: WeatherResourceDirect
       class: ModuleWeatherBundle.Resource.WeatherResourceImpl.Wunderground.Wunderground
       scope: singleton
       lazy-init: True
       constructor-args:
-          - "test value"
+          - { ref: AppParams }
+    
+    - object: RedisConnection1
+      class: ModuleRedisBundle.RedisConnection.RedisConnection
+      scope: singleton
+      lazy-init: True
+      constructor-args:
+          - "localhost"
+          - 6379
+    
