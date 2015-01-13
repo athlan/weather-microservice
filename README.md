@@ -37,7 +37,17 @@ $ deactivate
 ```
 python app.py
 ```
+or
+```
+python app.py [-h <host=0.0.0.0>] [-p <port=5000>] [-e <env=prod|dev>]
+```
+
+Make request:
+```
+curl http://localhost:5000/api/v1.0/weather/conditions/CA/San_Francisco
+```
 
 ## References
 
 * http://docs.spring.io/spring-python/1.2.x/sphinx/html/objects-yamlconfig.html
+* http://www.rafekettler.com/magicmethods.html
