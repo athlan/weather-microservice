@@ -10,7 +10,7 @@ class RedisConnection(object):
         db = options.get('db', 0)
         
         self.redis = redis.StrictRedis(host, port, db)
-
-    def connection(self):
-        return self.redis
+    
+    def __getattr__(self, name):
+        return getattr(self.redis, name)
     
