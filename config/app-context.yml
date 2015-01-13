@@ -13,6 +13,7 @@ objects:
       constructor-args:
           - { ref: WeatherResourceApiLimitGuard }
           - { ref: RedisConnection1 }
+          - 3600
     
     - object: WeatherResourceApiLimitGuard
       class: ModuleWeatherBundle.Resource.WeatherResourceImpl.WundergroundApiLimitGuard.WundergroundApiLimitGuard
