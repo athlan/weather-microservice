@@ -14,6 +14,8 @@ class Wunderground(WeatherResource):
     def getWeatherConditions(self, region, city):
         
         url = 'http://api.wunderground.com/api/%s/conditions/q/%s/%s.json' % (self.api_key, region, city)
+
+        print "Fetching weather from %s" % url
         
         req = urllib2.Request(url)
         response = urllib2.urlopen(req)
