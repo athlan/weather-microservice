@@ -5,6 +5,24 @@ This is simple microservice that provides information about weather.
 
 Author: Piotr Pelczar
 
+Weather microservice starts web server and provide weather conditions data as JSON API for selected location using Wunderground API. Results are cached into Redis key-value database.
+
+Futhermore there is a guard level that 
+
+Data is fetched from abstraction layer called Repository, and there are 3 implementations of Weather Respository:
+* `Wunderground` - base repository fetching data directly from Wunderground API.
+* `WundergroundApiLimitGuard` - repository proxy prevents calling API more times than is allowed by limits.
+* `Cached` - each request is cached locally.
+
+The app is based on Flask REST frmework utilizing Dependency Injection known from Spring (Spring Python), named instances of classes are declared in `app-context.yml`.
+
+Used libraries:
+* Flask
+* Flask REST
+* spring-python for Dependency Injection
+* PyYAML
+* Redis
+
 # API
 
 # Setup
@@ -46,6 +64,11 @@ Make request:
 ```
 curl http://localhost:5000/api/v1.0/weather/conditions/CA/San_Francisco
 ```
+
+## Configuration
+
+* config/parameters.yml (copy from config/parameters.yml.dist first)
+* config/app-context.yml (set cache TTL)
 
 ## References
 
